@@ -21,12 +21,11 @@ replicate' n b = let next = (n - 1)
 
 
 -- Ex. 4
-allnums :: Int -> [Int]
-allnums n  
+allNums :: Int -> [Int]
+allNums n  
     | n < 10 = [n] 
-	| otherwise = [n] ++ (allnums first)
-    where nums = []
-          first = n `div` 10
+    | otherwise = [n] ++ (allnums first)
+    where first = n `div` 10
 	
 isPrime :: Int -> Bool
 isPrime n 
@@ -39,7 +38,21 @@ isPrime n
 			| otherwise = isPrime' (current + 1) n
 
 truncatablePrime :: Int -> Bool
-truncatablePrime n = let list = allnums n
+truncatablePrime n = let list = allNums n
                      in if n < 10 then isPrime n
 					           else if (isPrime $ head list) == False then False
 					           else truncatablePrime (head $ tail list)
+
+
+-- Ex.5
+filterCount pred a b = length $ filter pred [a .. b]
+
+
+-- Ex. 6
+allNums2 :: Int -> [Int]
+allNums2 n 
+    | n < 10 = [n]
+    | otherwise = [(n `mod` 10)] ++ allNums2  (n `div` 10)
+	
+productOfDigits :: Int -> Int
+productOfDigits n = product $ allNums2 n
