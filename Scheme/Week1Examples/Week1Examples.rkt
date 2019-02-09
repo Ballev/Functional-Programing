@@ -7,6 +7,7 @@
       n
       (+ (fib (- n 1)) (fib (- n 2)))))
 
+
 ;;; Task 2: Hanoi tower movement. 
 
 (define (move n from to spare)
@@ -14,6 +15,7 @@
         (else
          (move (- n 1) from spare to)
          (move (- n 1) spare to from))))
+
 
 ;;; Task 3: Method to implement different sums easily. 
 
@@ -46,3 +48,14 @@
 
 (define (sum-sq a b)
   (sum square a 1+ b))
+
+
+;;; Task 4: Find, if number is prime?
+
+(define (prime? number)
+	(define (helper possible-divisor number)
+		(cond
+			((>= possible-divisor number) #t)
+			((= (remainder number possible-divisor) 0) #f)
+			(else (helper (+ possible-divisor 1) number))))
+(helper 2 3))
