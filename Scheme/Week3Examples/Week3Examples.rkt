@@ -26,8 +26,7 @@
   
   
 ;;; Task 2: Work with rational numbers.
-  
-  
+   
 (define (+rat x y)
   (make-rat
    (+ (* (numer x) (denom y))
