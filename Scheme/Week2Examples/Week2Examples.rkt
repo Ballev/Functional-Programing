@@ -3,18 +3,18 @@
 ;;; Task 1: Find square root precisely by using the Newton's method.
 
 (define (sqrt x)
-  (newton (lambda y (- x (square y)))
+  (newton (lambda (y) (- x (square y)))
           1))
 
 (define (newton f quess)
   (define df (deriv f))
   (fixed-point
-   (lambda x (- x (/ (f x) (df x))))
+   (lambda (x) (- x (/ (f x) (df x))))
   guess))
 
 (define deriv
-  (lambda f
-    (lambda x
+  (lambda (f)
+    (lambda (x)
       (/ (- (f (+ x dx))
             (f x))
          dx))))
@@ -49,7 +49,7 @@
  (let ((g (gcd (car x) (cdr x))))
     (/ (cdr x) g)))
 
-;Example
+;Examples
 (define a (make-rat 1 2))
 (define b (make-rat 1 4))
 (define ans (+rat a b))
