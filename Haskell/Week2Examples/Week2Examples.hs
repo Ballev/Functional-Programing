@@ -1,5 +1,7 @@
 -- Week 2 Haskell examples
 
+module Week2Examples where 
+
 -- Ex. 1
 flip' :: (a -> a -> a) -> a -> a -> a
 flip' f a b = f b a
